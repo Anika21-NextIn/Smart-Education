@@ -3,11 +3,18 @@ import React from 'react';
 const Header = () => {
     return (
         <>
+            <div id="preloader">
+                <div className="loader-container">
+                    <div className="progress-br float shadow">
+                        <div className="progress__item"></div>
+                    </div>
+                </div>
+            </div>
             <header className="top-navbar">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
                         <a className="navbar-brand" href="index.html">
-                            <img src="images/logo.png" alt="" />
+                            <img src="/assets/images/logo.png" alt="" />
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-host" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="icon-bar"></span>

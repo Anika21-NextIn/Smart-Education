@@ -3,7 +3,7 @@ import React from 'react';
 const Banner = () => {
     return (
         <>
-            <div id="carouselExampleControls" className="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >	
+            <div id="carouselExampleControls" style={{height: '600px'}} className="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >	
                 <ol className="carousel-indicators">
                     <li data-target="#carouselExampleControls" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleControls" data-slide-to="1"></li>
