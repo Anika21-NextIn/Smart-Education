@@ -24,32 +24,15 @@ const Header = () => {
                         </button>
                         <div className="collapse navbar-collapse" id="navbars-host">
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item active"><Link className="nav-link" to="/">Home</Link></li>
-                                <li className="nav-item"><a className="nav-link" href="about.html">About Us</a></li>
-                                {/* <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Course </a>
-                                    <div className="dropdown-menu" aria-labelledby="dropdown-a">
-                                        <a className="dropdown-item" href="course-grid-2.html">Course Grid 2 </a>
-                                        <a className="dropdown-item" href="course-grid-3.html">Course Grid 3 </a>
-                                        <a className="dropdown-item" href="course-grid-4.html">Course Grid 4 </a>
-                                    </div>
-                                </li> */}
+                                <li className="nav-item"><Link className="nav-link" to="/">Home</Link></li>
+                                <li className="nav-item"><Link className="nav-link" to="/aboutus">About Us</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/courses">Courses</Link></li>
-
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Blog </a>
-                                    <div className="dropdown-menu" aria-labelledby="dropdown-a">
-                                        <a className="dropdown-item" href="blog.html">Blog </a>
-                                        <a className="dropdown-item" href="blog-single.html">Blog single </a>
-                                    </div>
-                                </li>
-                                <li className="nav-item"><a className="nav-link" href="teachers.html">Teachers</a></li>
-                                <li className="nav-item"><a className="nav-link" href="pricing.html">Pricing</a></li>
+                                <li className="nav-item"><Link className="nav-link" to="/teachers">Teachers</Link></li>
                                 <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
                                 
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><a className="hover-btn-new log orange" href="#" data-toggle="modal" data-target="#login"><span>Book Now</span></a></li>
+                                <li><Link className="hover-btn-new log orange" to="/login"><span>Login</span></Link></li>
                             </ul>
                         </div>
                     </div>
