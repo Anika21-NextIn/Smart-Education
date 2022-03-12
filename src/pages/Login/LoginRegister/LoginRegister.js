@@ -1,8 +1,9 @@
 import React from 'react';
-import Footer from '../Shared/Footer/Footer';
-import Header from '../Shared/Header/Header';
+import Footer from '../../Shared/Footer/Footer';
+import Header from '../../Shared/Header/Header';
 
-const Login = () => {
+
+const LoginRegister = () => {
     return (
         <>
         <Header></Header>
@@ -85,4 +86,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginRegister;
