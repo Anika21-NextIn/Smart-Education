@@ -1,9 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 
 
 const LoginRegister = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
+    const handleSubmit =(e) =>{
+        e.preventDefault();
+        if(password.length < 6 ) {
+            setError('Password must be atleast 6 characters long');
+        }
+    }
+
     return (
         <>
         <Header></Header>
@@ -23,15 +42,18 @@ const LoginRegister = () => {
                         
                         <div className="tab-content">
                             <div className="tab-pane active" id="Login">
-                                <form role="form" className="form-horizontal">
+                                <form onSubmit={handleSubmit} role="form" className="form-horizontal">
                                     <div className="form-group">
                                         <div className="col-sm-12">
-                                            <input className="form-control" id="email1" placeholder="Name" type="text"/>
+                                            <input required onBlur={handleEmailChange} className="form-control" id="email" placeholder="Email" type="email" name='email'/>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <div className="col-sm-12">
-                                            <input className="form-control" id="exampleInputPassword1" placeholder="Email" type="email"/>
+                                            <input required onBlur={handlePasswordChange} className="form-control" id="password" placeholder="Enter Your Password" type="password" name='password'/>
+                                            <span>
+                                                {error}
+                                            </span>
                                         </div>
                                     </div>
                                     <div className="row">
@@ -39,7 +61,7 @@ const LoginRegister = () => {
                                             <button type="submit" className="btn btn-light btn-radius btn-brd grd1">
                                                 Submit
                                             </button>
-                                            <a className="for-pwd" href="javascript:;">Forgot your password?</a>
+                                            <Link to="/login" className="for-pwd">Forgot your password?</Link>
                                         </div>
                                     </div>
                                 </form>
