@@ -2,25 +2,33 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
-
+import useAuth from '../../../hooks/useAuth';
 
 const LoginRegister = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [loginData, setLoginData] = useState({});
     const [error, setError] = useState("");
+    const { loginUser, authError, signInWithGoogle } = useAuth();
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value)
+    const handleOnChange = (e) => {
+        const field = e.target.name;
+        const value = e.target.value;
+        const newLoginData = { ...loginData }
+        newLoginData[field] = value;
+        setLoginData(newLoginData);
     }
-
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
+   
     const handleSubmit =(e) =>{
         e.preventDefault();
-        if(password.length < 6 ) {
+        if(loginData.password.length < 6 ) {
             setError('Password must be atleast 6 characters long');
+            return;
         }
+        loginUser(loginData.email, loginData.password);
+        setError('');
+    }
+
+    const handleGoogleLogin =() => {
+        signInWithGoogle();
     }
 
     return (
@@ -33,6 +41,9 @@ const LoginRegister = () => {
 	        </div>
             <div id="overviews" className="section lb">
                 <div className="container">
+                    <div className='text-center'>
+                         { authError && <div className='text-danger'> {authError} </div>}
+                    </div>
                   <div className='customer-box'>
                         
                         <ul className="nav nav-tabs">
@@ -45,12 +56,12 @@ const LoginRegister = () => {
                                 <form onSubmit={handleSubmit} role="form" className="form-horizontal">
                                     <div className="form-group">
                                         <div className="col-sm-12">
-                                            <input required onBlur={handleEmailChange} className="form-control" id="email" placeholder="Email" type="email" name='email'/>
+                                            <input required onBlur={handleOnChange} className="form-control" id="email" placeholder="Email" type="email" name='email'/>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <div className="col-sm-12">
-                                            <input required onBlur={handlePasswordChange} className="form-control" id="password" placeholder="Enter Your Password" type="password" name='password'/>
+                                            <input required onBlur={handleOnChange} className="form-control" id="password" placeholder="Enter Your Password" type="password" name='password'/>
                                             <span>
                                                 {error}
                                             </span>
@@ -98,6 +109,9 @@ const LoginRegister = () => {
                                         </div>
                                     </div>
                                 </form>
+                            </div>
+                            <div>
+                                <button onClick={handleGoogleLogin} className='btn btn-info btn-sm mt-4 ml-1' type="button">Sign In With Google</button>
                             </div>
                         </div>
                      </div>
