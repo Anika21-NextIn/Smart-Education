@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+    const { user, logOut } = useAuth();
     return (
         <>
             {/* <div id="preloader">
@@ -32,7 +34,13 @@ const Header = () => {
                                 
                             </ul>
                             <ul className="nav navbar-nav navbar-right">
-                                <li><Link className="hover-btn-new log orange" to="/login"><span>Login</span></Link></li>
+                                <li>
+                                    {user.email ? 
+                                     <button onClick={logOut} className="hover-btn-new text-danger"><span>Logout</span></button>
+                                        : 
+                                     <Link className="hover-btn-new log orange" to="/login"><span>Login</span></Link>
+                                }
+                                </li>
                             </ul>
                         </div>
                     </div>
