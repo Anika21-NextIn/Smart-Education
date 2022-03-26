@@ -13,6 +13,7 @@ const Header = () => {
                     </div>
                 </div>
             </div> */}
+            
             <header className="top-navbar">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container-fluid">
@@ -33,14 +34,26 @@ const Header = () => {
                                 <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
                                 
                             </ul>
-                            <ul className="nav navbar-nav navbar-right">
+                            <ul className="nav navbar-nav ">
+                                { user.email ? <li className="nav-item dropdown">
+                                    <a className="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown"><i className="fa fa-user"></i> </a>
+                                    <div className="dropdown-menu" style={{left:"unset", right:'-30px'}} aria-labelledby="dropdown-a">
+                                        <Link className="dropdown-item" to="">{user.displayName} </Link>
+                                        <Link onClick={logOut} className="dropdown-item" to="">Logout</Link>
+                                    </div>
+                                </li> : 
                                 <li>
+                                <Link className="hover-btn-new log orange" to="/login"><span>Login</span></Link>
+                                </li>
+                                }
+                                
+                                {/* <li>
                                     {user.email ? 
                                      <button onClick={logOut} className="hover-btn-new text-danger"><span>Logout</span></button>
                                         : 
                                      <Link className="hover-btn-new log orange" to="/login"><span>Login</span></Link>
                                 }
-                                </li>
+                                </li> */}
                             </ul>
                         </div>
                     </div>
