@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import Header from '../../Shared/Header/Header';
 import useAuth from '../../../hooks/useAuth';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const LoginRegister = () => {
     const [loginData, setLoginData] = useState({});
@@ -10,6 +12,9 @@ const LoginRegister = () => {
 
     const [error, setError] = useState("");
     const { loginUser, registerUser, authError, signInWithGoogle, isLoading } = useAuth();
+
+    const history = useHistory();
+    const location = useLocation();
 
     const handleOnChange = (e) => {
         const field = e.target.name;
@@ -51,7 +56,7 @@ const LoginRegister = () => {
 
 
     const handleGoogleLogin =() => {
-        signInWithGoogle();
+        signInWithGoogle(location, history);
     }
 
     return (
